@@ -59,9 +59,6 @@ void _write_int(int n, int *count)
 	_write_positive_int(n, count);
 }
 
-/*to convert %b specifiers*/
-void _write_binary(unsigned int num, int *count)
-
 /**
  * _printf - Custom printf function
  * @format: The format string
@@ -91,11 +88,13 @@ int _printf(const char *format, ...)
 			else if (*format == 'c')
 			{
 				char c = va_arg(mylist, int);
+				
 				_write_char(c, &count);
 			}
 			else if (*format == 's')
 			{
 				char *str = va_arg(mylist, char *);
+				
 				if (str == NULL)
 					str = "(null)";
 				_write_str(str, &count);
@@ -103,14 +102,8 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
 			{
 				int integer = va_arg(mylist, int);
+				
 				_write_int(integer, &count);
-			}
-
-			else if (*format == 'b')
-			{
-				unsigned int num = va_arg(mylist, unsigned int)
-				_write_binary(num, &count);
-
 			}
 			else
 			{
